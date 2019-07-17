@@ -19,10 +19,23 @@ class TrieTree(object):
 		now.s = string
 		now.isString = True
 
-	def find(self, string):
-		now = self.root
-		for i in range(len(string)):
-			if string[i] not in now.subtree:
+	def search(self, string):
+		return self.find(self.root,string)
+
+
+	def find(self, node, string):
+		now = node
+		if string =='':
+			return now.isString
+		if string[0]=='.':
+			for i in now.subtree.keys():
+				if not self.find(now.subtree[i],string[1:]):
+					continue
+				else:
+					return True
+			return False
+		else:
+			if string[0] not in now.subtree:
 				return False
-			now = now.subtree[string[i]]
-		return now.isString
+			else:
+				return self.find(now.subtree[string[0]], string[1:])

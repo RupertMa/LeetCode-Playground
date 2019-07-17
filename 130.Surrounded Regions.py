@@ -41,4 +41,25 @@ class Solution:
                         visited[point[0]][point[1]] = True
         if trigger: return [] 
         return region
+
+    def dfs(self,i,j,m,n,visited,board):
+        neighbor = list(zip([1,0,-1,0],[0,1,0,-1]))
+        stack = [(i,j)]
+        visited[i][j] = True
+        region = []
+        trigger = False
+        while stack:
+            top = stack.pop()
+            if top[0]==0 or top[0]==n-1 or top[1]==0 or top[1]==m-1:
+                trigger = True
+            region.append(top)
+            for p in neighbor:
+                point = (top[0]+p[0], top[1]+p[1])
+                #print(self.isValid(point,m,n))
+                if self.isValid(point,m,n):
+                    if (board[point[0]][point[1]]=='O') & (not visited[point[0]][point[1]]):
+                        stack.append(point)
+                        visited[point[0]][point[1]] = True
+        if trigger: return [] 
+        return region
                     
