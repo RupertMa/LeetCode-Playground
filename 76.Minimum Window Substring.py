@@ -33,4 +33,3 @@ class Solution:
                     ansString = s[l:r]
                 subString[s[l]] -= 1
         return ansString
-            
