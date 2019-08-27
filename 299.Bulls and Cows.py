@@ -21,3 +21,15 @@ class Solution(object):
                 B += 1
                 unused[guess[i]] = unused[guess[i]] - 1
         return "{}A{}B".format(A,B)
+
+
+# Method 2
+class Solution:
+    import operator
+    def getHint(self, secret: str, guess: str) -> str:
+        from collections import Counter
+        bull = sum(map(operator.eq, secret, guess))
+        a = Counter(secret)
+        b = Counter(guess)
+        cow = sum((a&b).values()) - bull
+        return '{}A{}B'.format(bull,cow)

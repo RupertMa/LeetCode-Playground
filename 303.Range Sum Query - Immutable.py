@@ -19,3 +19,18 @@ class NumArray(object):
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(i,j)
+
+# Method 2
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.preSum = [0]
+        Sum = 0
+        for i in nums:
+            Sum += i
+            self.preSum.append(Sum)
+            
+        
+
+    def sumRange(self, i: int, j: int) -> int:
+        return self.preSum[j+1] - self.preSum[i]
