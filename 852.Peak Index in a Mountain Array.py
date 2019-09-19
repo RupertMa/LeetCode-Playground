@@ -9,4 +9,4 @@ class Solution:
             else:
                 r = median - 1
         return l-1
-        
+         
