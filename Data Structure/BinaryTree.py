@@ -7,21 +7,40 @@ class BinaryTree():
 
 class Solutions(object):
 
-	def traverse(self, root, result):
+	def inorderTraverse(self, root, result):
+		if root == None:
+			return None
+		self.inorderTraverse(root.left, result)
+		result.append(root.val)
+		self.inorderTraverse(root.right, result)
+
+	def preorderTraverse(self, root, result):
 		if root == None:
 			return None
 		result.append(root.val)
-		self.traverse(root.left, result)
-		self.traverse(root.right, result)
+		self.preorderTraverse(root.left, result)
+		self.preorderTraverse(root.right, result)
+
+	def postorderTraverse(self, root, result):
+		if root == None:
+			return None
+		self.postorderTraverse(root.left, result)
+		self.postorderTraverse(root.right, result)
+		result.append(root.val)
 
 	# Recursion
-	def preorderTraverse(self, root):
+	def traverse(self, root, method = 'preorder'):
 		result = []
-		self.traverse(root, result)
+		if method == 'preorder':
+			self.preorderTraverse(root, result)
+		elif method == 'inorder':
+			self.inorderTraverse(root, result)
+		elif method == 'postorder':
+			self.postorderTraverse(root, result)
 		return result
 
 	# Dive & Conquer
-	def preorderTraverse(self, root):
+	def preorderTraverse_DC(self, root):
 		result = []
 
 		if root == None:
@@ -47,4 +66,4 @@ x.left.right = BinaryTree(5)
 
 
 y = Solutions()
-print(y.preorderTraverse(x))
+print(y.traverse(x, 'postorder'))
