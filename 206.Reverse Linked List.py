@@ -10,13 +10,26 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return None
-        a = ListNode(head.val)
-        head = head.next
-        while head:
-            b = ListNode(head.val)
-            b.next = a
-            a = b
-            head = head.next
-        return a
+
+#A quicker solution:
+        cur = head
+        prev = None
+        while cur:
+            temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp    
+        return prev
+
+
+#Written by Yibo: 
+        # if not head:
+        #     return None
+        # a = ListNode(head.val)
+        # head = head.next
+        # while head:
+        #     b = ListNode(head.val)
+        #     b.next = a
+        #     a = b
+        #     head = head.next
+        # return a
