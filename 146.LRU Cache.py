@@ -3,7 +3,7 @@ class LRUCache:
         self.capacity = capacity
         self.dummy = Node()
         self.node_to_prev = {}
-        self.tail = self.dummy #Node()
+        self.tail = self.dummy #Initially, the dummy node is the tail node as there is no other node.
 
     def pop_top(self):
         head = self.dummy.next
