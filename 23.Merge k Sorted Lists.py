@@ -13,8 +13,9 @@ class Solution:
         dummy = ListNode(None)
         curNode = dummy
         lists = [l for l in lists if l]
-        heapq.heapify(lists)
-                
+        heapq.heapify(lists) #Time complexity klog(k)
+        
+        #Time complexity nlog(k)        
         while lists:
             curNode.next = heapq.heappop(lists)
             curNode = curNode.next
