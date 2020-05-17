@@ -19,7 +19,7 @@ class Solution:
             head = head.next
         return dummy.next
 
-    # Approach 2: Edit lined list itself.
+    # Approach 2: Edit linked list itself.
     # Time complexity: O(N)
     # Space complexity: O(1)
     def deleteDuplicates(self, head: ListNode) -> ListNode:
