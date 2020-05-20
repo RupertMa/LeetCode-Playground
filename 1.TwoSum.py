@@ -43,15 +43,11 @@ class Solution(object):
     # Space complexity O(1) (theoretically, but not applicable for this problem)
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         nums = sorted([(num, idx) for idx, num in enumerate(nums)])
-        slow = 0 ; fast = 1
-        while slow < len(nums) - 1:
-            while fast < len(nums):
-                if (nums[slow][0] + nums[fast][0]) == target:
-                    return [nums[slow][1], nums[fast][1]]
-                elif nums[slow][0] + nums[fast][0] < target:
-                    fast += 1
-                else:
-                    break
-            slow += 1
-            fast = slow + 1
-        return None
+        left = 0 ; right = len(nums) - 1
+        while left < right:
+            if nums[left][0] + nums[right][0] == target:
+                return [nums[left][1], nums[right][1]]
+            elif nums[left][0] + nums[right][0] < target:
+                left += 1
+            else:
+                right -= 1
