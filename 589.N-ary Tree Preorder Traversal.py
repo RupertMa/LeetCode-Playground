@@ -7,14 +7,11 @@ class Node:
 """
 class Solution:
     def preorder(self, root: 'Node') -> List[int]:
-        if not root:
-            return []
         ans = []
-        stack = [root]
+        stack = [root] if root else root
         while stack:
-            curNode = stack.pop()
-            if curNode.children:
-                stack.extend(curNode.children[::-1])
-            ans.append(curNode.val)
+            cur = stack.pop()
+            if cur.children:
+                stack.extend(cur.children[::-1])
+            ans.append(cur.val)
         return ans
-            
