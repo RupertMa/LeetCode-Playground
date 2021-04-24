@@ -29,3 +29,8 @@ class Solution:
 
         # Time complexity: O(N)
         # Space complexity: O(1)
+
+    def countBinarySubstrings(self, s: str) -> int:
+        import itertools
+        groups = [len(list(v)) for _, v in itertools.groupby(s)]
+        return sum(min(a, b) for a, b in zip(groups, groups[1:]))
