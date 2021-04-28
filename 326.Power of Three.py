@@ -9,3 +9,5 @@ class Solution:
             return True
         else:
             return self.helper(n/3)
+    # Time complexity: O(logN)
+    # Space complexity: O(1)
