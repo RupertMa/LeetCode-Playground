@@ -28,11 +28,5 @@ class Solution:
             #print(left, right, find_left, find_right)
         return ans
 
-x = Solution()
-print(x.searchRange(nums = [5,7,7,8,8,10], target = 8))
-
-print(x.searchRange(nums = [5,7,7,8,8,8,10], target = 8))
-
-print(x.searchRange(nums = [5,7,7,8,8,8,9,10], target = 8))
-
-print(x.searchRange(nums = [5,7,7,8,8,8,9,10], target = 9))
+        # Time complexity: O(logN)
+        # Space complexity: O(1)
