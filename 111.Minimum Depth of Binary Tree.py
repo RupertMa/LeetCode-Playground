@@ -19,3 +19,21 @@ class Solution:
             if curNode.right:
                 queue.append((curNode.right, depth+1))
         return depth
+
+    def minDepth(self, root: TreeNode) -> int:
+        queue = [[root]] if root else None
+        ans = 0
+        while queue:
+            nodes = queue.pop(0)
+            ans += 1
+            temp = []
+            for cur in nodes:
+                if (not cur.left) and (not cur.right):
+                    return ans
+                if cur.left:
+                    temp.append(cur.left)
+                if cur.right:
+                    temp.append(cur.right)
+            if temp:
+                queue.append(temp)
+        return ans
