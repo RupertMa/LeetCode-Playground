@@ -24,7 +24,22 @@ class Solution:
         stack = unionFind[id][0]
         while stack:
             sub = stack.pop()
-            subs, importance = unionFind[sub] 
+            subs, importance = unionFind[sub]
             stack.extend(subs)
             unionFind[id] = (unionFind[id][0], unionFind[id][1] + importance)
         return unionFind[id][1]
+
+    def getImportance(self, employees: List['Employee'], id: int) -> int:
+        from collections import defaultdict
+        tree = defaultdict(list)
+        for emp in employees:
+            tree[emp.id]=(emp.importance, emp.subordinates)
+        ans = 0
+        queue = [id]
+        while queue:
+            cur = queue.pop(0)
+            importance, subs = tree[cur]
+            ans += importance
+            for sub in subs:
+                queue.append(sub)
+        return ans
