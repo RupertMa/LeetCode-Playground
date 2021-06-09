@@ -17,7 +17,25 @@ class KthLargest:
             heapq.heappush(self.ans, val)
             self.Min =  heapq.heappop(self.ans)
         return  self.Min
-        
+
+class KthLargest:
+    # Time complexity: klog(k)
+    def __init__(self, k: int, nums: List[int]):
+        if len(nums) >= k:
+            self.elements = sorted(nums)[-k:]
+            self.ans = self.elements.pop(0)
+        else:
+            self.elements = sorted(nums)
+            self.ans = float('-inf')
+
+    # Time complexity: klog(k)
+    def add(self, val: int) -> int:
+        if val > self.ans:
+            self.elements.append(val)
+            self.elements = sorted(self.elements)
+            self.ans = self.elements.pop(0)
+
+        return self.ans
 
 
 # Your KthLargest object will be instantiated and called as such:
