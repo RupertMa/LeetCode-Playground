@@ -14,3 +14,24 @@ class Solution(object):
         if not queueS:
             return True
         return False
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        from collections import defaultdict
+        positions = defaultdict(list)
+        for i,j in enumerate(t):
+            positions[j].append(i)
+        prev = -1
+        for c in s:
+            if positions[c]:
+                cond = True
+                for p in positions[c]:
+                    if p > prev:
+                        cond = False
+                        prev = p
+                        break
+                if cond:
+                    return False
+            else:
+                return False
+        return True
