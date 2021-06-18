@@ -14,10 +14,16 @@ class Solution(object):
 				i+=1
 		return res
 
-
-g=list(raw_input('Enter g:'))
-s=list(raw_input('Enter s'))
-y=findContentChildren(g,s)
-print y
-
-
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        from collections import deque
+        g = deque(sorted(g))
+        s = deque(sorted(s))
+        count = 0
+        while g and s:
+            if g[0] <= s[0]:
+                count += 1
+                g.popleft()
+            s.popleft()
+        return count
+  #Time complexity: O(nlogn)
