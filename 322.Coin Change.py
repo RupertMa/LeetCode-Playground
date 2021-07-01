@@ -6,3 +6,4 @@ class Solution:
                 if i - c >= 0:
                     dp[i] = min(dp[i], dp[i-c]+1)
         return -1 if dp[amount]==float('inf') else dp[amount]
+        # Time complexity: O(amount * len(coins))
