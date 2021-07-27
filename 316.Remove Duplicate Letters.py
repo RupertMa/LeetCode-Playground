@@ -14,3 +14,5 @@ class Solution:
             ans += top
             s = s[idx+1:].replace(top, '')
         return ans
+    # Time complexity: O(N * len(set(s)))
+    # Space complexity: O(N)
