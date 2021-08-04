@@ -54,7 +54,6 @@ class Solution:
         if n in permanent:
             return True
         if n in temp:
-            print('should be here')
             return False
 
         temp.add(n)
