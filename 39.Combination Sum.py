@@ -23,3 +23,4 @@ class Solution:
                 temp.extend([key]* val)
             ans.append(temp)
         return ans
+    # Time complexity: O(target*n)
