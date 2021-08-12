@@ -3,9 +3,10 @@ class Solution:
         n = len(nums)
         dp = [0] * (target + 1)
         dp[0] = 1
-        
+
         for i in range(target):
             for j in range(n):
                 if nums[j] + i <= target:
                     dp[nums[j] + i] += dp[i]
         return dp[target]
+        #Time complexity: O(target * n)
