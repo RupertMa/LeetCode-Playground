@@ -18,3 +18,13 @@ class Solution:
             curNode = curNode.next
             pos += 1
         return False
+
+    def hasCycle(self, head: ListNode) -> bool:
+        cur = head
+        seen = set()
+        while cur:
+            if cur in seen:
+                return True
+            seen.add(cur)
+            cur = cur.next
+        return False

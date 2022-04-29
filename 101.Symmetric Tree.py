@@ -7,7 +7,7 @@
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        queue = [[root]]     
+        queue = [[root]]
         while queue:
             ans = []
             temp = []
@@ -24,4 +24,23 @@ class Solution:
             if temp:
                 queue.append(temp)
         return True
-                
+
+    def isSymmetric(self, root: TreeNode) -> bool:
+        queue = [[root]]
+        while queue:
+            temp = []
+            nodes = queue.pop(0)
+            for cur in nodes:
+                if cur:
+                    temp.append(cur.left)
+                    temp.append(cur.right)
+            c = [i.val if i else i for i in temp]
+            if c[:len(c)//2] != c[len(c)//2:][::-1]:
+                return False
+            else:
+                if temp:
+                    queue.append(temp)
+        return True
+
+    # Time complexity: O(N)
+    # Space complexity: O(N)
