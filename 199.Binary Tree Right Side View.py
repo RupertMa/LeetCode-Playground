@@ -63,3 +63,26 @@ class Solution:
                 num = next
                 next = 0
         return ans
+
+# 2025/03/02
+# Time complexity: O(N)
+# Space complexity: O(N)
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        queue = [root]
+        ans = []
+        while queue:
+            next_level = []
+            for node in queue:
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            if next_level:
+                queue = next_level
+            else:
+                queue = []
+            ans.append(node.val)
+        return ans
